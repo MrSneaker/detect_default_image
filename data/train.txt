@@ -1,0 +1,6 @@
+/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/labeled_imgs/Normal.png
+/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/labeled_imgs/SL_Pli.png
+/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/labeled_imgs/ST_Inf.png
+/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/labeled_imgs/ST_Point.png
+/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/labeled_imgs/ST_SUP_Pli.png
+/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/labeled_imgs/ST_Sup.png

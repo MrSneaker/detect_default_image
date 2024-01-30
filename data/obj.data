@@ -1,0 +1,5 @@
+classes = 6
+train  = /home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/train.txt
+valid  = /home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/test.txt
+names = /home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/obj.names
+backup = backup/

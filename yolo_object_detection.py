@@ -1,10 +1,10 @@
 import cv2 as cv
 import numpy as np
-# from wandb import Classes
+from wandb import Classes
 
 # load yolo
-net = cv.dnn.readNet("/home/mateo/COURS/M1/OuvertureRecherche/YOLO-object-detection-using-Opencv-with-Python/yolov3.weights",
-                     "/home/mateo/COURS/M1/OuvertureRecherche/YOLO-object-detection-using-Opencv-with-Python/yolov3.cfg")
+net = cv.dnn.readNet("yolov3.weights",
+                     "yolov3.cfg")
 clasees = []
 with open("coco.names", 'r') as f:
     classes = [line.strip() for line in f.readlines()]
@@ -14,7 +14,7 @@ output_layer = [layer_name[i - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # Load Image
-img = cv.imread("/home/mateo/COURS/M1/OuvertureRecherche/YOLO-object-detection-using-Opencv-with-Python/room_ser.jpg")
+img = cv.imread("DATASET_Sujet2/Defaut/image_2_ST_Inf.png")
 img = cv.resize(img, None, fx=0.4, fy=0.4)
 height, width, channel = img.shape
 
@@ -65,5 +65,11 @@ for i in range(len(boxes)):
         cv.putText(img, label, (x, y + 30), font, 3, color, 3)
 
 cv.imshow("IMG", img)
-cv.waitKey(0)
+while True:
+    key = cv.waitKey(1)
+    if cv.getWindowProperty("IMG", cv.WND_PROP_VISIBLE) < 1:
+        break
+    if key != -1:
+        break
+
 cv.destroyAllWindows()
