@@ -1,6 +1,6 @@
+ST_Inf
+SL_Pli
+ST_Point
+ST_Sup
+ST_Sup_Pli
 Normal
-SL PLI
-ST INF
-ST Point
-ST Sup
-ST SUP/PLI

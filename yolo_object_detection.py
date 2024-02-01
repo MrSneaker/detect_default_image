@@ -3,10 +3,10 @@ import numpy as np
 from wandb import Classes
 
 # load yolo
-net = cv.dnn.readNet("yolov3.weights",
-                     "yolov3.cfg")
+net = cv.dnn.readNet("yolov3_custom_last.weights",
+                     "yolov3_custom.cfg")
 clasees = []
-with open("coco.names", 'r') as f:
+with open("data/obj.names", 'r') as f:
     classes = [line.strip() for line in f.readlines()]
 # print(classes)
 layer_name = net.getLayerNames()
@@ -14,16 +14,15 @@ output_layer = [layer_name[i - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # Load Image
-img = cv.imread("DATASET_Sujet2/Defaut/image_2_ST_Inf.png")
+img = cv.imread("DATASET_Sujet2/Defaut/image_300_ST_Sup_Pli.png")
 img = cv.resize(img, None, fx=0.4, fy=0.4)
 height, width, channel = img.shape
 
 # Detect Objects
 blob = cv.dnn.blobFromImage(
-    img, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
+    img, 0.00392, (32, 32), (0, 0, 0), True, crop=False)
 net.setInput(blob)
 outs = net.forward(output_layer)
-# print(outs)
 
 # Showing Information on the screen
 class_ids = []
@@ -34,35 +33,38 @@ for out in outs:
         scores = detection[5:]
         class_id = np.argmax(scores)
         confidence = scores[class_id]
-        if confidence > 0.5:
+        if confidence > 0.4:
             # Object detection
+            print(confidence)
+            print(str(class_id))
             center_x = int(detection[0] * width)
             center_y = int(detection[1] * height)
-            w = int(detection[2] * width)
+            w = int(detection[2] * width) if detection[2] * width > 0 else 1  # Avoid division by zero
             h = int(detection[3] * height)
-            # cv.circle(img, (center_x, center_y), 10, (0, 255, 0), 2 )
-            # Reactangle Cordinate
             x = int(center_x - w/2)
             y = int(center_y - h/2)
-            boxes.append([x, y, w, h])
+            boxes.append([x, abs(y), w, h])
             confidences.append(float(confidence))
             class_ids.append(class_id)
-
-# print(len(boxes))
-# number_object_detection = len(boxes)
+            break
+print(len(boxes))
+print(boxes[0])
+number_object_detection = len(boxes)
 
 indexes = cv.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
-print(indexes)
+
+print("Indexes:", indexes)
 
 font = cv.FONT_HERSHEY_PLAIN
 for i in range(len(boxes)):
-    if i in indexes:
-        x, y, w, h = boxes[i]
-        label = str(classes[class_ids[i]])
-        # print(label)
-        color = colors[i]
-        cv.rectangle(img, (x, y), (x + w, y + h), color, 2)
-        cv.putText(img, label, (x, y + 30), font, 3, color, 3)
+    print("Current i:", i)
+    # if i in indexes:
+    x, y, w, h = boxes[i]
+    label = str(classes[class_ids[i]])
+    print(f"Box {i}: ({x}, {y}, {w}, {h}), Label: {label}")
+    color = colors[i]
+    cv.rectangle(img, (x, y), (x + w, y + h), color, 2)
+    cv.putText(img, label, (x, y + 30), font, 3, color, 3)
 
 cv.imshow("IMG", img)
 while True:
