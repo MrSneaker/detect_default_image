@@ -3,19 +3,19 @@ import numpy as np
 from wandb import Classes
 
 # load yolo
-net = cv.dnn.readNet("yolov3_custom_last.weights",
+net = cv.dnn.readNet("yolov3_custom_final.weights",
                      "yolov3_custom.cfg")
 clasees = []
 with open("data/obj.names", 'r') as f:
     classes = [line.strip() for line in f.readlines()]
-# print(classes)
+print(classes)
 layer_name = net.getLayerNames()
 output_layer = [layer_name[i - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # Load Image
-img = cv.imread("DATASET_Sujet2/Defaut/image_300_ST_Sup_Pli.png")
-img = cv.resize(img, None, fx=0.4, fy=0.4)
+img = cv.imread("DATASET_Sujet2/Defaut/image_104_SL.png")
+# img = cv.imread("DATASET_Sujet2/Sans_Defaut/image_69923_rotated.png")
 height, width, channel = img.shape
 
 # Detect Objects
@@ -33,38 +33,31 @@ for out in outs:
         scores = detection[5:]
         class_id = np.argmax(scores)
         confidence = scores[class_id]
-        if confidence > 0.4:
+        print(confidence)
+        if confidence > 0.0:
             # Object detection
-            print(confidence)
-            print(str(class_id))
             center_x = int(detection[0] * width)
             center_y = int(detection[1] * height)
-            w = int(detection[2] * width) if detection[2] * width > 0 else 1  # Avoid division by zero
+            w = int(detection[2] * width)
             h = int(detection[3] * height)
             x = int(center_x - w/2)
             y = int(center_y - h/2)
-            boxes.append([x, abs(y), w, h])
+            boxes.append([x, y, w, h])
             confidences.append(float(confidence))
             class_ids.append(class_id)
-            break
-print(len(boxes))
-print(boxes[0])
+
 number_object_detection = len(boxes)
-
-indexes = cv.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
-
-print("Indexes:", indexes)
 
 font = cv.FONT_HERSHEY_PLAIN
 for i in range(len(boxes)):
-    print("Current i:", i)
-    # if i in indexes:
     x, y, w, h = boxes[i]
     label = str(classes[class_ids[i]])
+    confidenceStr = 'conf: ' + "{:.5f}".format(confidences[i])
     print(f"Box {i}: ({x}, {y}, {w}, {h}), Label: {label}")
     color = colors[i]
     cv.rectangle(img, (x, y), (x + w, y + h), color, 2)
-    cv.putText(img, label, (x, y + 30), font, 3, color, 3)
+    cv.putText(img, label, (x + 15, y + 55), font, 2, color, 1)
+    cv.putText(img, confidenceStr, (x + 15, y + 75), font, 2, color, 1)
 
 cv.imshow("IMG", img)
 while True:
