@@ -1,8 +1,15 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QMenuBar, QFileDialog, QHBoxLayout
+import shutil
+from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QPushButton, QFileDialog, QHBoxLayout
 from PyQt6.QtGui import QPixmap, QAction
+from yolo_object_detection import ObjectDetector
+
 
 class ImageViewerApp(QMainWindow):
+    currentImgPath = None
+    obj_det = ObjectDetector(
+        "yolov3_custom_final.weights", "yolov3_custom.cfg", "data/obj.names")
+
     def __init__(self):
         super().__init__()
 
@@ -26,9 +33,16 @@ class ImageViewerApp(QMainWindow):
         self.image_label = QLabel("Image Display Area")
         image_panel_layout.addWidget(self.image_label)
 
+        # Button to trigger YOLO model treatment
+        self.compute_button = QPushButton("Compute YOLO Model Treatment")
+        self.compute_button.clicked.connect(self.computeResearch)
+        image_panel_layout.addWidget(self.compute_button)
+
         # Set layouts to central widget
-        main_layout.addLayout(left_panel_layout, 1)  # Left panel takes 1/3 of the space
-        main_layout.addLayout(image_panel_layout, 2)  # Image panel takes 2/3 of the space
+        # Left panel takes 1/3 of the space
+        main_layout.addLayout(left_panel_layout, 1)
+        # Image panel takes 2/3 of the space
+        main_layout.addLayout(image_panel_layout, 2)
 
         # Menu Bar
         menubar = self.menuBar()
@@ -49,17 +63,30 @@ class ImageViewerApp(QMainWindow):
         self.show()
 
     def openImage(self):
-        fileName, _ = QFileDialog.getOpenFileName(self, "Open Image File", "", "Images (*.png *.jpg *.bmp);;All Files (*)")
+        fileName, _ = QFileDialog.getOpenFileName(
+            self, "Open Image File", "", "Images (*.png *.jpg *.bmp);;All Files (*)")
 
         if fileName:
+            self.currentImgPath = fileName
             pixmap = QPixmap(fileName)
             self.image_label.setPixmap(pixmap)
+
+    def closeEvent(self, event):
+        shutil.rmtree("tmp/", ignore_errors=True)
+        event.accept()
+
+    def computeResearch(self):
+        if (self.currentImgPath != None):
+            self.obj_det.detect_objects_and_save(self.currentImgPath,
+                                                 "tmp/currentImg.png")
+            pixmap = QPixmap("tmp/currentImg.png")
+            self.image_label.setPixmap(pixmap)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     with open('style.qss', 'r') as f:
         style = f.read()
-        # Set the stylesheet of the application
         app.setStyleSheet(style)
     viewer_app = ImageViewerApp()
     sys.exit(app.exec())
