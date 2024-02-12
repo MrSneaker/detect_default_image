@@ -40,16 +40,14 @@ class ObjectDetector:
                     confidences.append(float(confidence))
                     class_ids.append(class_id)
 
-        number_object_detection = len(boxes)
-
         for i in range(len(boxes)):
             x, y, w, h = boxes[i]
             label = str(self.classes[class_ids[i]])
             confidenceStr = 'conf: ' + "{:.5f}".format(confidences[i])
             color = self.colors[i]
             cv.rectangle(img, (x, y), (x + w, y + h), color, 2)
-            cv.putText(img, label, (x + 15, y + 55), cv.FONT_HERSHEY_PLAIN, 2, color, 1)
-            cv.putText(img, confidenceStr, (x + 15, y + 75), cv.FONT_HERSHEY_PLAIN, 2, color, 1)
+            cv.putText(img, label, (50, 50), cv.FONT_HERSHEY_PLAIN, 1.5, color, 1)
+            cv.putText(img, confidenceStr, (50, 75), cv.FONT_HERSHEY_PLAIN, 1.5, color, 1)
 
         return img
 
