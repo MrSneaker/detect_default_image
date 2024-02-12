@@ -2,7 +2,7 @@
 import os
 import shutil
 
-full_path_to_images = '/home/mateo/M1/ouverture-a-la-recherche/DATASET_Sujet2/Defaut'
+full_path_to_images = '/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/DATASET_Sujet2/Sans_Defaut'
 
 train_dir = os.path.join(full_path_to_images, 'train_images')
 test_dir = os.path.join(full_path_to_images, 'test_images')
@@ -17,8 +17,8 @@ for current_dir, dirs, files in os.walk(full_path_to_images):
         if f.endswith('.png'):
             image_paths.append(os.path.join(current_dir, f))
 
-test_image_paths = image_paths[:int(len(image_paths) * 0.15)]
-train_image_paths = image_paths[int(len(image_paths) * 0.15):]
+test_image_paths = image_paths[:int(len(image_paths) * 0.03)]
+train_image_paths = image_paths[int(len(image_paths) * 0.90):]
 
 for image_path in train_image_paths:
     shutil.copy(image_path, train_dir)
