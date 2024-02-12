@@ -1,85 +1,40 @@
+# https://github.com/jakkcoder/Training_Yolo_Custom_Object_Detection_files/blob/main/creating-train-and-test-txt-files.py
 import os
+import shutil
 
+full_path_to_images = '/home/mateo/M1/ouverture-a-la-recherche/DATASET_Sujet2/Defaut'
 
-"""
-Start of:
-Setting up full path to directory with labelled images
-"""
+train_dir = os.path.join(full_path_to_images, 'train_images')
+test_dir = os.path.join(full_path_to_images, 'test_images')
 
-# Full or absolute path to the folder with images
-# Find it with Py file getting-full-path.py
-# Pay attention! If you're using Windows, yours path might looks like:
-# r'C:\Users\my_name\Downloads\video-to-annotate'
-# or:
-# 'C:\\Users\\my_name\\Downloads\\video-to-annotate'
-full_path_to_images = '/home/mateo/COURS/M1/OuvertureRecherche/ouverture-a-la-recherche/data/test_set'
+os.makedirs(train_dir, exist_ok=True)
+os.makedirs(test_dir, exist_ok=True)
 
-"""
-End of:
-Setting up full path to directory with labelled images
-"""
+image_paths = []
 
-
-"""
-Start of:
-Getting list of full paths to labelled images
-"""
-
-# Check point
-# Getting the current directory
-# print(os.getcwd())
-
-# Changing the current directory
-# to one with images
-os.chdir(full_path_to_images)
-
-# Check point
-# Getting the current directory
-# print(os.getcwd())
-
-# Defining list to write paths in
-p = []
-
-# Using os.walk for going through all directories
-# and files in them from the current directory
-# Fullstop in os.walk('.') means the current directory
-for current_dir, dirs, files in os.walk('.'):
-    # Going through all files
+for current_dir, dirs, files in os.walk(full_path_to_images):
     for f in files:
-        # Checking if filename ends with '.jpeg'
         if f.endswith('.png'):
-            # Preparing path to save into train.txt file
-            # Pay attention!
-            # If you're using Windows, it might need to change
-            # this: + '/' +
-            # to this: + '\' +
-            # or to this: + '\\' +
-            path_to_save_into_txt_files = full_path_to_images + '/' + f
+            image_paths.append(os.path.join(current_dir, f))
 
-            # Appending the line into the list
-            # We use here '\n' to move to the next line
-            # when writing lines into txt files
-            p.append(path_to_save_into_txt_files + '\n')
+test_image_paths = image_paths[:int(len(image_paths) * 0.15)]
+train_image_paths = image_paths[int(len(image_paths) * 0.15):]
 
-"""
-End of:
-Getting list of full paths to labelled images
-"""
+for image_path in train_image_paths:
+    shutil.copy(image_path, train_dir)
 
+for image_path in test_image_paths:
+    shutil.copy(image_path, test_dir)
 
-"""
-Start of:
-Creating train.txt and test.txt files
-"""
+train_txt_path = os.path.join(full_path_to_images, 'train.txt')
+test_txt_path = os.path.join(full_path_to_images, 'test.txt')
 
-# Creating file train.txt and writing 85% of lines in it
-with open('test.txt', 'w') as train_txt:
-    # Going through all elements of the list
-    for e in p:
-        # Writing current path at the end of the file
-        train_txt.write(e)
+with open(train_txt_path, 'w') as train_txt:
+    for image_path in train_image_paths:
+        train_txt.write(image_path + '\n')
 
-"""
-End of:
-Creating train.txt and test.txt files
-"""
+with open(test_txt_path, 'w') as test_txt:
+    for image_path in test_image_paths:
+        test_txt.write(image_path + '\n')
+
+print("Le processus est terminé avec succès.")
