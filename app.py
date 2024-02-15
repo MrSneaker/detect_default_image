@@ -1,7 +1,9 @@
 import sys
 import shutil
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QPushButton, QFileDialog, QHBoxLayout
-from PyQt6.QtGui import QPixmap, QAction
+from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QGridLayout, QWidget, QPushButton, QFileDialog, QHBoxLayout, QSizePolicy
+from PyQt6.QtGui import QPixmap, QAction, QGuiApplication, QIcon
+from PyQt6 import QtCore
+from PyQt6.QtCore import QSize
 from yolo_object_detection import ObjectDetector
 
 
@@ -12,7 +14,7 @@ class ImageViewerApp(QMainWindow):
 
     def __init__(self):
         super().__init__()
-
+        self.image_label = QLabel("Image Display Area")
         self.initUI()
 
     def initUI(self):
@@ -26,11 +28,36 @@ class ImageViewerApp(QMainWindow):
         image_panel_layout = QVBoxLayout()
 
         # Left panel widgets
-        left_panel_label = QLabel("Left Panel")
+        left_panel_label = QLabel()
+        left_panel_label.setObjectName("leftPanel")
         left_panel_layout.addWidget(left_panel_label)
+        button_layout = QGridLayout(left_panel_label)
+        openFileBtn = QPushButton()
+        openFileBtn.setIcon(QIcon("app-data/icons/file-icon.svg"))
+        self.setButtonIconSize(openFileBtn)
+        button_layout.addWidget(openFileBtn)
+        openDirBtn = QPushButton()
+        openDirBtn.setIcon(QIcon("app-data/icons/open-dir.png"))
+        self.setButtonIconSize(openDirBtn)
+        button_layout.addWidget(openDirBtn)
+        zoomInBtn = QPushButton()
+        button_layout.addWidget(zoomInBtn)
+        zoomInBtn.setIcon(QIcon("app-data/icons/zoomIn.png"))  
+        self.setButtonIconSize(zoomInBtn)
+        zoomOutBtn = QPushButton()
+        zoomOutBtn.setIcon(QIcon("app-data/icons/zoomOut.png"))
+        self.setButtonIconSize(zoomOutBtn)
+        button_layout.addWidget(zoomOutBtn)
+        openFileBtn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        openDirBtn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        zoomInBtn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        zoomOutBtn.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        openFileBtn.clicked.connect(self.openImage)
+        zoomInBtn.clicked.connect(lambda: self.zoomImage(1.1))
+        zoomOutBtn.clicked.connect(lambda: self.zoomImage(0.9))
 
         # Image panel widgets
-        self.image_label = QLabel("Image Display Area")
+        self.image_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         image_panel_layout.addWidget(self.image_label)
 
         # Button to trigger YOLO model treatment
@@ -59,6 +86,7 @@ class ImageViewerApp(QMainWindow):
         file_menu.addAction(exit_action)
 
         self.setGeometry(100, 100, 800, 600)
+
         self.setWindowTitle('App')
         self.show()
 
@@ -74,6 +102,15 @@ class ImageViewerApp(QMainWindow):
     def closeEvent(self, event):
         shutil.rmtree("tmp/", ignore_errors=True)
         event.accept()
+    
+    def zoomImage(self, factor):
+        if self.currentImgPath != None:
+            pixmap = self.image_label.pixmap()
+            size = pixmap.size()
+            size.setWidth(int(size.width() * factor))
+            size.setHeight(int(size.height() * factor))
+            pixmap = pixmap.scaled(size, QtCore.Qt.AspectRatioMode.IgnoreAspectRatio, QtCore.Qt.TransformationMode.FastTransformation)
+            self.image_label.setPixmap(pixmap)
 
     def computeResearch(self):
         if (self.currentImgPath != None):
@@ -81,6 +118,10 @@ class ImageViewerApp(QMainWindow):
                                                  "tmp/currentImg.png")
             pixmap = QPixmap("tmp/currentImg.png")
             self.image_label.setPixmap(pixmap)
+
+    def setButtonIconSize(self, button):
+        icon_size = min(button.size().width(), button.size().height()) * 0.15
+        button.setIconSize(QSize(int(icon_size), int(icon_size)))
 
 
 if __name__ == '__main__':
