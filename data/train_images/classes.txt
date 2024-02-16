@@ -1,1 +1,5 @@
 ST_Inf_OU_Sup
+SL_Pli
+ST_Point
+ST_Sup_Pli
+Normal
