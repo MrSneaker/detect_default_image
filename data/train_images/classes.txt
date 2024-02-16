@@ -1,2 +1,1 @@
-SL_Pli
-ST_Point
+ST_Inf_OU_Sup
