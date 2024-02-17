@@ -3,11 +3,13 @@ import os
 def extract_label_id(image_name):
     if 'ST_Inf' in image_name:
         return 0
+    elif 'ST_Sup' in image_name and not 'ST_Sup_Pli' in image_name:
+        return 0
     elif 'SL' in image_name:
         return 1
     elif 'STP' in image_name:
         return 2
-    elif 'ST_Sup_Pli':
+    elif 'ST_Sup_Pli' in image_name:
         return 3
     else:
         return 4
