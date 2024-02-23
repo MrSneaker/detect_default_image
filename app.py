@@ -10,7 +10,7 @@ from yolo_object_detection import ObjectDetector
 class ImageViewerApp(QMainWindow):
     currentImgPath = None
     obj_det = ObjectDetector(
-        "yolov3_custom_final.weights", "yolov3_custom.cfg", "data/obj.names")
+        "yolov3_custom_best.weights", "yolov3_custom.cfg", "data/obj.names")
 
     def __init__(self):
         super().__init__()
@@ -57,7 +57,7 @@ class ImageViewerApp(QMainWindow):
         zoomOutBtn.clicked.connect(lambda: self.zoomImage(0.9))
 
         # Image panel widgets
-        self.image_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.image_label.setAlignment(QtCore.Qt.Alignment.AlignCenter)
         image_panel_layout.addWidget(self.image_label)
 
         # Button to trigger YOLO model treatment
