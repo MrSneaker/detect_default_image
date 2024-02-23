@@ -16,13 +16,15 @@ class ObjectDetector:
         img = cv.imread(image_path)
         height, width, channel = img.shape
 
-        blob = cv.dnn.blobFromImage(img, 0.00392, (32, 32), (0, 0, 0), True, crop=False)
+        blob = cv.dnn.blobFromImage(img, 0.00392, (256, 256), (0, 0, 0), True, crop=False)
         self.net.setInput(blob)
         outs = self.net.forward(self.output_layers)
 
         class_ids = []
         confidences = []
         boxes = []
+        max_confidence = 0
+        max_confidence_id = None
 
         for out in outs:
             for detection in out:
@@ -39,12 +41,16 @@ class ObjectDetector:
                     boxes.append([x, y, w, h])
                     confidences.append(float(confidence))
                     class_ids.append(class_id)
+                    
+                    if confidence > max_confidence:
+                        max_confidence = confidence
+                        max_confidence_id = len(boxes) - 1
 
-        for i in range(len(boxes)):
-            x, y, w, h = boxes[i]
-            label = str(self.classes[class_ids[i]])
-            confidenceStr = 'conf: ' + "{:.5f}".format(confidences[i])
-            color = self.colors[i]
+        if max_confidence_id is not None:
+            x, y, w, h = boxes[max_confidence_id]
+            label = str(self.classes[class_ids[max_confidence_id]])
+            confidenceStr = 'conf: ' + "{:.5f}".format(max_confidence)
+            color = (0,255,0)
             cv.rectangle(img, (x, y), (x + w, y + h), color, 2)
             cv.putText(img, label, (50, 50), cv.FONT_HERSHEY_PLAIN, 1.5, color, 1)
             cv.putText(img, confidenceStr, (50, 75), cv.FONT_HERSHEY_PLAIN, 1.5, color, 1)
