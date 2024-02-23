@@ -132,6 +132,10 @@ class ImageViewerApp(QMainWindow):
             self.image_label.setPixmap(pixmap)
             self.originalImgSize = pixmap.size()
             self.original_pixmap = pixmap
+            self.nextImgBtn.setEnabled(False)
+            self.nextImgBtn.setVisible(False)
+            self.backImgBtn.setVisible(False)
+            self.backImgBtn.setEnabled(False)
 
     def loadImage(self, file_path):
         pixmap = QPixmap(file_path)
