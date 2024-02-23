@@ -29,7 +29,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_67821_rotated.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_6164_rotated.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_6594_rotated.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_54.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_68238_rotated.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_170_STP.png_15.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_301_ST_Sup_Pli.png_61.png
@@ -55,7 +54,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_69542_rotated.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_102_SL.png_49.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_6991_rotated.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_53.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_69617_rotated.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_6082_rotated.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_67547_rotated.png
@@ -115,7 +113,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_304_ST_Sup_Pli.png_54.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_306_ST_Sup_Pli.png_66.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_302_ST_Sup_Pli.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_43.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_111_SL.png_23.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_9_ST_Inf.png_51.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_205_ST_Sup.png_22.png
@@ -143,7 +140,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_11_ST_Inf.png_0.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_167_STP.png_34.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_303_ST_Sup_Pli.png_31.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_32.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_205_ST_Sup.png_32.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_112_SL.png_27.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_200_ST_Sup.png_34.png
@@ -238,7 +234,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_17_ST_Inf.png_24.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_105_SL.png_68.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_209_ST_Sup.png_27.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_13.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_8_ST_Inf.png_57.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_304_ST_Sup_Pli.png_12.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_14_ST_Inf.png_68.png
@@ -313,7 +308,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_102_SL.png_8.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_211_ST_Sup.png_15.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_2_ST_Inf.png_55.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_70.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_200_ST_Sup.png_53.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_302_ST_Sup_Pli.png_38.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_104_SL.png_9.png
@@ -494,7 +488,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_301_ST_Sup_Pli.png_49.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_203_ST_Sup.png_33.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_170_STP.png_36.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_30.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_209_ST_Sup.png_53.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_112_SL.png_0.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_112_SL.png_24.png
@@ -625,7 +618,7 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_204_ST_Sup.png_23.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_104_SL.png_31.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_113_SL.png_34.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png
+
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_211_ST_Sup.png_49.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_114_SL.png_26.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_169_STP.png_34.png
@@ -645,7 +638,6 @@
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_16_ST_Inf.png_2.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_308_ST_Sup_Pli.png_48.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_161_STP.png_39.png
-/home/mateo/M1/ouverture-a-la-recherche/data/test_images/ST_Sup_Pli.png_28.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_308_ST_Sup_Pli.png_2.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_101_SL.png_46.png
 /home/mateo/M1/ouverture-a-la-recherche/data/test_images/image_167_STP.png_14.png
