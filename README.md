@@ -22,6 +22,8 @@
     pip install -r requirements.txt
     ```
 
+5. Télécharger les poids du modèle Yolo du projet dans le répertoire ```ouverture-a-la-recherche``` sur [ce lien](https://filesender.renater.fr/?s=download&token=b41af96c-345c-4e37-bcf8-9c9d8decb044) (lien expirant le 25/03/2024).
+
 ## Utilisation
 
 1. Une fois les dépendances installées, lancez l'application en exécutant le fichier `app.py` :
@@ -39,6 +41,10 @@
 5. Les défauts détectés seront mis en évidence et classés sur l'image thermique affichée.
 
 6. Vous pouvez alors récupérez l'image générée ou zoomer sur le défaut par exemple.
+
+## Génération de données pour tester le modèle
+
+En executant le script ```createUnknownData.py```, vous pouvez créer dans le dossier ```nouveau_dossier_test``` à la racine du projet un set d'image nouvellement générer. Si vous voulez réduire ou augmenter la difficulté de détection sur le set généré, vous pouvez simplement modifier la force du flou gaussien ligne 40 du script.
 
 ## Auteurs
 

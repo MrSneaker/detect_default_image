@@ -97,6 +97,11 @@ class ImageViewerApp(QMainWindow):
         btnDirContainer.addWidget(self.nextImgBtn)
         image_panel_layout.addLayout(btnDirContainer)
 
+        self.image_name_label = QLabel()
+        self.image_name_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.image_name_label.setVisible(False)
+        image_panel_layout.addWidget(self.image_name_label)
+
         # Set layouts to central widget
         # Left panel takes 1/3 of the space
         main_layout.addLayout(left_panel_layout, 1)
@@ -136,6 +141,8 @@ class ImageViewerApp(QMainWindow):
             self.nextImgBtn.setVisible(False)
             self.backImgBtn.setVisible(False)
             self.backImgBtn.setEnabled(False)
+            self.image_name_label.setVisible(True)
+            self.image_name_label.setText(f"Image Display Area - {fileName}")
 
     def loadImage(self, file_path):
         pixmap = QPixmap(file_path)
@@ -144,6 +151,8 @@ class ImageViewerApp(QMainWindow):
             self.image_label.setPixmap(pixmap)
             self.originalImgSize = pixmap.size()
             self.original_pixmap = pixmap
+            self.image_name_label.setVisible(True)
+            self.image_name_label.setText(f"Image Display Area - {file_path}")
         else:
             QMessageBox.warning(self, "Error", "Failed to load image.")
 
