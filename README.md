@@ -1,5 +1,7 @@
 # Ouverture à la recherche - Détection et classification automatique des défauts dans une image thermique en se basant sur les méthodes d’apprentissage profond
 
+Ce projet est un projet universitaire de Master 1 qui visait à détecter et classifier des défauts dans des images thermiques de façon automatique grâce à l'apprentissage profond.
+
 ## Installation
 
 1. Assurez-vous d'avoir Python installé sur votre système. Si ce n'est pas le cas, vous pouvez le télécharger depuis [python.org](https://www.python.org/).
@@ -22,7 +24,7 @@
     pip install -r requirements.txt
     ```
 
-5. Télécharger les poids du modèle Yolo du projet dans le répertoire ```ouverture-a-la-recherche``` sur [ce lien](https://filesender.renater.fr/?s=download&token=b41af96c-345c-4e37-bcf8-9c9d8decb044) (lien expirant le 25/03/2024).
+5. Télécharger les poids du modèle Yolo du projet dans le répertoire ```ouverture-a-la-recherche``` sur [ce lien](https://mega.nz/file/Fj8njCzZ#_Ukt5qZ42OxeRKcVzZf4ZcXp49FV9Jf8sJXLv0osAu4) (si le lien n'est plus valable me contacter).
 
 ## Utilisation
 
@@ -44,7 +46,7 @@
 
 ## Génération de données pour tester le modèle
 
-En executant le script ```createUnknownData.py```, vous pouvez créer dans le dossier ```nouveau_dossier_test``` à la racine du projet un set d'image nouvellement générer. Si vous voulez réduire ou augmenter la difficulté de détection sur le set généré, vous pouvez simplement modifier la force du flou gaussien ligne 40 du script.
+En executant le script ```createUnknownData.py```, vous pouvez créer dans le dossier ```nouveau_dossier_test``` à la racine du projet un set d'image nouvellement généré. Si vous voulez réduire ou augmenter la difficulté de détection sur le set généré, vous pouvez simplement modifier la force du flou gaussien ligne 40 du script.
 
 ## Auteurs
 
