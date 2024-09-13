@@ -1,6 +1,6 @@
 # Ouverture à la recherche - Détection et classification automatique des défauts dans une image thermique en se basant sur les méthodes d’apprentissage profond
 
-Ce projet est un projet universitaire de Master 1 qui visait à détecter et classifier des défauts dans des images thermiques de façon automatique grâce à l'apprentissage profond.
+Ce projet est un projet universitaire de Master 1 qui visait à détecter et classifier des défauts dans des images thermiques de façon automatique grâce à l'apprentissage profond. Le but du projet était de s'ouvrir au domaine de la recherche et donc de réaliser le projet comme un projet de recherche. Pour cette raison, un état de l'art et un rapport respectant le style d'un article de recherche ont été réalisé pour ce projet. Ces documents sont accessibles dans ce dépot à la racine.
 
 ## Installation
 
