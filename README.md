@@ -15,7 +15,7 @@ Ce projet est un projet universitaire de Master 1 qui visait à détecter et cla
 3. Accédez au répertoire du projet :
 
     ```bash
-    cd ouverture-a-la-recherche
+    cd detect_default_image
     ```
 
 4. Installez les dépendances requises en exécutant la commande suivante :
@@ -24,7 +24,7 @@ Ce projet est un projet universitaire de Master 1 qui visait à détecter et cla
     pip install -r requirements.txt
     ```
 
-5. Télécharger les poids du modèle Yolo du projet dans le répertoire ```ouverture-a-la-recherche``` sur [ce lien](https://mega.nz/file/Fj8njCzZ#_Ukt5qZ42OxeRKcVzZf4ZcXp49FV9Jf8sJXLv0osAu4) (si le lien n'est plus valable me contacter).
+5. Télécharger les poids du modèle Yolo du projet dans le répertoire ```detect_default_image``` sur [ce lien](https://mega.nz/file/Fj8njCzZ#_Ukt5qZ42OxeRKcVzZf4ZcXp49FV9Jf8sJXLv0osAu4) (si le lien n'est plus valable me contacter).
 
 ## Utilisation
 
