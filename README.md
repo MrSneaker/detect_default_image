@@ -9,7 +9,7 @@ Ce projet est un projet universitaire de Master 1 qui visait à détecter et cla
 2. Clonez ce dépôt GitHub sur votre machine locale en utilisant la commande suivante dans votre terminal :
 
     ```bash
-    git clone https://forge.univ-lyon1.fr/p2002495/ouverture-a-la-recherche.git
+    git clone https://github.com/MrSneaker/detect_default_image.git
     ```
 
 3. Accédez au répertoire du projet :
